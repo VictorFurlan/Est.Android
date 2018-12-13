@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ATM Ampresa Consultoria</string>
+    <string name="EmpresaDetalhes">Sobre a Empresa</string>
+    <string name="ServicoDetalhes">Serviços</string>
+    <string name="textoconsultoria">Consultoria</string>
+    <string name="ClientesDetalhes">Nossos Clientes</string>
+    <string name="DetalheContato">Contato</string>
+</resources>
