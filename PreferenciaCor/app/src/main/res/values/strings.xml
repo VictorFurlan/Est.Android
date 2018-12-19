@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PreferenciaCor</string>
+    <string name="texto_titulo">Escolha uma cor de fundo</string>
+    <string name="corAzul">Azul</string>
+    <string name="conLaranja">Laranja</string>
+    <string name="corVerde">Verde</string>
+    <string name="botaoSalvar">Salvar</string>
+</resources>
