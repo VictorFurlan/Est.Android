@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "405673249556",
+    "firebase_url": "https://autencicacao-usuario-fb3ef.firebaseio.com",
+    "project_id": "autencicacao-usuario-fb3ef",
+    "storage_bucket": "autencicacao-usuario-fb3ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405673249556:android:2fb3a6e15efc40ee",
+        "android_client_info": {
+          "package_name": "autenticacaousuario.com.krampus.autenticacaousuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405673249556-pk7knluh5oq75tsg7i217gmfdhfdk58q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "autenticacaousuario.com.krampus.autenticacaousuario",
+            "certificate_hash": "7ca3af710c658d22971405a24ea10f52dc3e35ab"
+          }
+        },
+        {
+          "client_id": "405673249556-mnjou9nbsscua6bs6petdcp0k3ep7v2r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZzHR8KkM3CdpUiMgDnDqIa2dwLUOhbps"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405673249556-mnjou9nbsscua6bs6petdcp0k3ep7v2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
