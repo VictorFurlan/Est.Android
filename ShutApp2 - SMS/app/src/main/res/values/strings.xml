@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ShutApp</string>
+    <string name="textoValidacao">Você recebeu um SMS para validação de seu número, digite o código de validação a baixo:</string>
+</resources>
