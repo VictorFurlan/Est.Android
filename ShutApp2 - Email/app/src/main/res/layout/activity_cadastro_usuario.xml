@@ -32,13 +32,13 @@
         android:ems="10"
         android:hint="Digite seu nome"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_cadastro_email"
+        app:layout_constraintBottom_toTopOf="@+id/edit_login_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/edit_cadastro_email"
+        android:id="@+id/edit_login_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -49,13 +49,13 @@
         android:ems="10"
         android:hint="Digite seu e-mail"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/edit_cadastro_senha"
+        app:layout_constraintBottom_toTopOf="@+id/edit_login_senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_nome" />
 
     <EditText
-        android:id="@+id/edit_cadastro_senha"
+        android:id="@+id/edit_login_senha"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -65,11 +65,11 @@
         android:layout_marginBottom="36dp"
         android:ems="10"
         android:hint="Digite sua senha"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/bt_cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_email" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_login_email" />
 
     <Button
         android:id="@+id/bt_cadastrar"
@@ -86,5 +86,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_cadastro_senha" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_login_senha" />
 </android.support.constraint.ConstraintLayout>

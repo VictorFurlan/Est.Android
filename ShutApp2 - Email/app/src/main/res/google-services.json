@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "249812055193",
+    "firebase_url": "https://chatapp-420a1.firebaseio.com",
+    "project_id": "chatapp-420a1",
+    "storage_bucket": "chatapp-420a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249812055193:android:cc0e3d0e3c13b604",
+        "android_client_info": {
+          "package_name": "br.com.shutappandroid.com.krampus.shutapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "249812055193-uago504qb0jjvf8qtaku0lbmovflafne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.shutappandroid.com.krampus.shutapp",
+            "certificate_hash": "7ca3af710c658d22971405a24ea10f52dc3e35ab"
+          }
+        },
+        {
+          "client_id": "249812055193-1tqu61t4u81qq32cluetag3kee7upqnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9ndcd1rmXp_YrkIYBmiFh07DKl3VU4cE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "249812055193-1tqu61t4u81qq32cluetag3kee7upqnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
