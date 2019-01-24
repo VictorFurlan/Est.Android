@@ -73,6 +73,7 @@
 
     <Button
         android:id="@+id/bt_cadastrar"
+        android:theme="@style/botaoPadrao"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -80,9 +81,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="99dp"
-        android:background="@color/colorPrimaryDark"
         android:text="@string/boato_cadastrar"
-        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

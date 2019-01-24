@@ -3,4 +3,6 @@
     <string name="textoValidacao">Você recebeu um SMS para validação de seu número, digite o código de validação a baixo:</string>
     <string name="texto_cadastre">Não tem conta? Cadastre-se</string>
     <string name="boato_cadastrar">Cadastrar</string>
+    <string name="menu_item_configuracoes">Configurações</string>
+    <string name="menu_item_sair">Sair</string>
 </resources>

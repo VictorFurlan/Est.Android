@@ -68,15 +68,14 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     abrirTelaPrincipal();
                     Toast.makeText(LoginActivity.this, "Login realizado com sucesso!", Toast.LENGTH_LONG).show();
-                }else{
+                } else {
                     String erroExcessao = "";
-                    try{
+                    try {
                         throw task.getException();
-                    }catch (FirebaseAuthInvalidUserException e){
+                    } catch (FirebaseAuthInvalidUserException e) {
                         erroExcessao = "Email digitado não esta cadastrado";
                     } catch (FirebaseAuthInvalidCredentialsException e) {
                         erroExcessao = "Senha inconrreta!";
@@ -84,9 +83,9 @@ public class LoginActivity extends AppCompatActivity {
                         erroExcessao = "Ao efetuar o Login!";
                         e.printStackTrace();
                     }
-                    Toast.makeText(LoginActivity.this, "Erro: " + erroExcessao, Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Erro: " + erroExcessao, Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
         });
     }
 
