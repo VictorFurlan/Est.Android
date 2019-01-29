@@ -1,5 +1,6 @@
 package br.com.shutappandroid.com.krampus.shutapp.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import br.com.shutappandroid.com.krampus.shutapp.R;
+import br.com.shutappandroid.com.krampus.shutapp.helper.Base65Custom;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
 import br.com.shutappandroid.com.krampus.shutapp.model.Usuario;
 
@@ -64,16 +66,17 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    Toast.makeText(CadastroUsuarioActivity.this, "Cadastro realizado com sucesso!",Toast.LENGTH_LONG).show();
 
                     // recupera o UID do usuario no firebase
-                    FirebaseUser user = task.getResult().getUser();
-                    usuario.setId(user.getUid());
+                    //FirebaseUser user = task.getResult().getUser().getUid();
+                    String identificadorUsuario = Base65Custom.codificarBase64(usuario.getEmail());
+                    usuario.setId(identificadorUsuario);
                     usuario.salvar();
 
-                    autenticacao.signOut();
-                    finish();
+                    abrirLoginusuario();
 
-                    Toast.makeText(CadastroUsuarioActivity.this, "Cadastro realizado com sucesso!",Toast.LENGTH_LONG).show();
+
                 }else{
                     String erroExcessao = "";
                     try{
@@ -94,4 +97,11 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void abrirLoginusuario(){
+        Intent intent = new Intent(CadastroUsuarioActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
