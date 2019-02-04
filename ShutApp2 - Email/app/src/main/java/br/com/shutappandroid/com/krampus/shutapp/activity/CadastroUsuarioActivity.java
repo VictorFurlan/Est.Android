@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.helper.Base65Custom;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
+import br.com.shutappandroid.com.krampus.shutapp.helper.Preferencias;
 import br.com.shutappandroid.com.krampus.shutapp.model.Usuario;
 
 public class CadastroUsuarioActivity extends AppCompatActivity {
@@ -73,6 +74,9 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     String identificadorUsuario = Base65Custom.codificarBase64(usuario.getEmail());
                     usuario.setId(identificadorUsuario);
                     usuario.salvar();
+
+                    Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
+                    preferencias.salvarDados(identificadorUsuario);
 
                     abrirLoginusuario();
 

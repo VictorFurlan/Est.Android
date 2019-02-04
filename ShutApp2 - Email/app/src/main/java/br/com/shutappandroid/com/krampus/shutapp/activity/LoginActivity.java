@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import br.com.shutappandroid.com.krampus.shutapp.MainActivity;
 import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
+import br.com.shutappandroid.com.krampus.shutapp.helper.Base65Custom;
+import br.com.shutappandroid.com.krampus.shutapp.helper.Preferencias;
 import br.com.shutappandroid.com.krampus.shutapp.model.Usuario;
 
 
@@ -68,10 +70,18 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+
                 if (task.isSuccessful()) {
+
+                    Preferencias preferencias = new Preferencias(LoginActivity.this);
+                    String IdUsuarioLogado = Base65Custom.codificarBase64(usuario.getEmail());
+                    preferencias.salvarDados(IdUsuarioLogado);
+
                     abrirTelaPrincipal();
                     Toast.makeText(LoginActivity.this, "Login realizado com sucesso!", Toast.LENGTH_LONG).show();
+
                 } else {
+
                     String erroExcessao = "";
                     try {
                         throw task.getException();
