@@ -31,11 +31,26 @@ public class ContatosFragment extends Fragment {
     private ArrayAdapter adapter;
     private ArrayList<String> contatos;
     private DatabaseReference firebase;
+    private ValueEventListener valueEventListenerContatos;
 
     public ContatosFragment() {
         // Required empty public constructor
     }
 
+    //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+    //Manipula a vida util do fragment para não ficar rodando sempre a espera de mudanças do banco
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebase.addListenerForSingleValueEvent(valueEventListenerContatos);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        firebase.removeEventListener(valueEventListenerContatos);
+    }
+    //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +78,7 @@ public class ContatosFragment extends Fragment {
 
         //Listener para recuperar os contatos
         //Só atualizará os contatos se houver alteração no nó do banco setado a cima
-        firebase.addListenerForSingleValueEvent(new ValueEventListener() {
+        valueEventListenerContatos = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -83,13 +98,8 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-
             }
-        });
-
-
+        };
         return view;
     }
-
 }
