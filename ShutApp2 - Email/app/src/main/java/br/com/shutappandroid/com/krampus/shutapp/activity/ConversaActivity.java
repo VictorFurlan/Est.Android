@@ -10,7 +10,7 @@ import br.com.shutappandroid.com.krampus.shutapp.R;
 
 public class ConversaActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private android.support.v7.widget.Toolbar toolbar;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -21,8 +21,8 @@ public class ConversaActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.tb_conversa);
 
         toolbar.setTitle("blabla");
-        toolbar.setNavigationIcon();
-
+        toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
+        setSupportActionBar(toolbar);
 
     }
 }
