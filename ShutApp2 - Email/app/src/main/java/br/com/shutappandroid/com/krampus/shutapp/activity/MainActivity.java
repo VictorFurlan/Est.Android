@@ -1,4 +1,4 @@
-package br.com.shutappandroid.com.krampus.shutapp;
+package br.com.shutappandroid.com.krampus.shutapp.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -21,10 +21,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.helper.*;
 import br.com.shutappandroid.com.krampus.shutapp.adapter.TabAtapter;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
-import br.com.shutappandroid.com.krampus.shutapp.activity.LoginActivity;
 import br.com.shutappandroid.com.krampus.shutapp.model.Contato;
 import br.com.shutappandroid.com.krampus.shutapp.model.Usuario;
 

@@ -15,11 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.database.DatabaseReference;
 
-import br.com.shutappandroid.com.krampus.shutapp.MainActivity;
 import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
 import br.com.shutappandroid.com.krampus.shutapp.helper.Base65Custom;
@@ -109,5 +105,14 @@ public class LoginActivity extends AppCompatActivity {
 
         Intent intent = new Intent(LoginActivity.this, CadastroUsuarioActivity.class );
         startActivity(intent);
+    }
+
+    public static class ConversaActivity extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main2);
+        }
     }
 }

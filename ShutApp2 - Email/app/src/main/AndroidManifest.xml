@@ -18,8 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".activity.CadastroUsuarioActivity"></activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.CadastroUsuarioActivity" />
+        <activity android:name=".activity.LoginActivity$ConversaActivity" />
+        <activity android:name=".activity.ConversaActivity"></activity>
     </application>
 
 </manifest>
