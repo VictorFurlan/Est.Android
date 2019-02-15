@@ -10,6 +10,7 @@ import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.controler.PokeAdapter;
 import com.example.krampus.listapokemon.interfaces.PokeInterface;
 import com.example.krampus.listapokemon.model.PokeGet;
+import com.example.krampus.listapokemon.model.Pokemon;
 
 import java.util.ArrayList;
 
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
                     PokeGet pokeGet = response.body();
 
-                    ArrayList<PokeGet> listaPokemon = pokeGet.getResults();
+                    ArrayList<Pokemon> listaPokemon = pokeGet.getResults();
 
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);
 

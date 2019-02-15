@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.krampus.listapokemon.R;
+import com.example.krampus.listapokemon.model.PokeGet;
 import com.example.krampus.listapokemon.model.Pokemon;
 import com.example.krampus.listapokemon.view.DetalhesActivity;
 
