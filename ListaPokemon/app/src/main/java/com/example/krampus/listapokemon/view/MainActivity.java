@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.krampus.listapokemon.R;
-import com.example.krampus.listapokemon.model.PokeAdapter;
+import com.example.krampus.listapokemon.controler.PokeAdapter;
 import com.example.krampus.listapokemon.interfaces.PokeInterface;
 import com.example.krampus.listapokemon.controler.PokeGet;
 import com.example.krampus.listapokemon.model.Pokemon;
@@ -78,16 +78,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void obterDatos(int offset) {
         PokeInterface service = retrofit.create(PokeInterface.class);
-        Call<PokeGet> pokemonRespuestaCall = service.obtenerListaPokemon(20,offset);
+        Call<PokeGet> pokemonRespostaCall = service.obtenerListaPokemon(20,offset);
 
-        pokemonRespuestaCall.enqueue(new Callback<PokeGet>() {
+        pokemonRespostaCall.enqueue(new Callback<PokeGet>() {
             @Override
             public void onResponse(Call<PokeGet> call, Response<PokeGet> response) {
                 flag = true;
                 if(response.isSuccessful()){
-                    PokeGet pokemonRespuesta = response.body();
+                    PokeGet pokemonResposta = response.body();
 
-                    ArrayList<Pokemon> listaPokemon = pokemonRespuesta.getResults();
+                    ArrayList<Pokemon> listaPokemon = pokemonResposta.getResults();
 
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);
 

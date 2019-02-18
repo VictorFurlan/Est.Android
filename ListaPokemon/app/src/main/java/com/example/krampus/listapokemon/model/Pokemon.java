@@ -1,11 +1,14 @@
 package com.example.krampus.listapokemon.model;
 
 
+import java.util.ArrayList;
+
 public class Pokemon {
 
     private int number;
     private String name;
     private String url;
+
 
     public String getName() {
         return name;

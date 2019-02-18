@@ -1,12 +1,10 @@
-package com.example.krampus.listapokemon.model;
+package com.example.krampus.listapokemon.controler;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.krampus.listapokemon.R;
+import com.example.krampus.listapokemon.model.Pokemon;
 import com.example.krampus.listapokemon.view.DetalhesActivity;
 
 import java.util.ArrayList;
@@ -88,7 +87,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
 
                 if(poke.getName().equals(pokemon)){
                     int idPoke = poke.getNumber();
-                    Log.i("TESTE", pokemon + " " + dataset.indexOf(itemView) + " " + idPoke);
+                    //Log.i("TESTE", pokemon + " " + dataset.indexOf(itemView) + " " + idPoke);
                     bundle.putInt("NumberPokemon", idPoke);
                         }
             }
