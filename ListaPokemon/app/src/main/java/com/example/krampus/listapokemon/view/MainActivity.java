@@ -7,9 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.krampus.listapokemon.R;
-import com.example.krampus.listapokemon.controler.PokeAdapter;
+import com.example.krampus.listapokemon.model.PokeAdapter;
 import com.example.krampus.listapokemon.interfaces.PokeInterface;
-import com.example.krampus.listapokemon.model.PokeGet;
+import com.example.krampus.listapokemon.controler.PokeGet;
+import com.example.krampus.listapokemon.model.Pokemon;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
-    private static final String TAG = "LISTAPOKEMON";
+    private static final String TAG = "POKEDEX";
 
     private RecyclerView recyclerView;
     private PokeAdapter listaPokemonAdapter;
@@ -35,64 +36,63 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.rv_pokemon);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaPokemonAdapter = new PokeAdapter(this);
         recyclerView.setAdapter(listaPokemonAdapter);
         recyclerView.setHasFixedSize(true);
 
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                if (dy >0){
+                    int visibleItemCount = layoutManager.getChildCount();
+                    int totalItemCount = layoutManager.getItemCount();
+                    int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
-                if(dy > 0){
-                    int childCount = layoutManager.getChildCount();
-                    int itemCount = layoutManager.getItemCount();
-                    int firstPosition = layoutManager.findFirstVisibleItemPosition();
-
-                    if(flag){
-                        if( (childCount + firstPosition) > itemCount ){
+                    if(flag) {
+                        if ((visibleItemCount +pastVisibleItems ) >= totalItemCount) {
+                            Log.i(TAG, " FIM");
                             flag = false;
-                            offset+=20;
-                            obterDados(offset);
+                            offset += 20;
+                            obterDatos(offset);
                         }
-
                     }
                 }
             }
         });
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://pokeapi.co/api/v2/")
+                .baseUrl("http://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         flag = true;
         offset = 0;
-        obterDados(offset);
+        obterDatos(offset);
     }
 
-    private void obterDados(int offset){
+    private void obterDatos(int offset) {
         PokeInterface service = retrofit.create(PokeInterface.class);
-        Call<PokeGet> pokemoncall = service.listaPokemon(20, offset);
+        Call<PokeGet> pokemonRespuestaCall = service.obtenerListaPokemon(20,offset);
 
-        pokemoncall.enqueue(new Callback<PokeGet>() {
+        pokemonRespuestaCall.enqueue(new Callback<PokeGet>() {
             @Override
             public void onResponse(Call<PokeGet> call, Response<PokeGet> response) {
                 flag = true;
                 if(response.isSuccessful()){
+                    PokeGet pokemonRespuesta = response.body();
 
-                    PokeGet pokeGet = response.body();
-
-                    ArrayList<PokeGet> listaPokemon = pokeGet.getResults();
+                    ArrayList<Pokemon> listaPokemon = pokemonRespuesta.getResults();
 
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);
 
                 } else
                     Log.e(TAG, " on response "+ response.errorBody());
-
             }
 
             @Override
@@ -102,4 +102,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

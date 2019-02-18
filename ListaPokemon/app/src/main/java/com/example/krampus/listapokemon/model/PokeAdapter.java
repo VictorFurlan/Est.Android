@@ -1,10 +1,12 @@
-package com.example.krampus.listapokemon.controler;
+package com.example.krampus.listapokemon.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.krampus.listapokemon.R;
-import com.example.krampus.listapokemon.model.Pokemon;
 import com.example.krampus.listapokemon.view.DetalhesActivity;
 
-
 import java.util.ArrayList;
-
-/**
- * Created by monsh on 02/05/2017.
- */
 
 public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     private ArrayList<Pokemon> dataset;
@@ -44,9 +40,9 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(PokeAdapter.ViewHolder holder, int position) {
         p = dataset.get(position);
-        holder.nombreTextView.setText(p.getName());
+        holder.nomeTextView.setText(p.getName());
         Glide.with(context)
-                .load("http://pokeapi.co/media/sprites/pokemon/" + p.getIdPoke() + ".png")
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + p.getNumber() + ".png")
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -68,27 +64,31 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView fotoImageView;
-        private TextView nombreTextView;
-        private CardView tarjetas;
+        private TextView nomeTextView;
+        private CardView cardItemPokemon;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            
+            fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
+            nomeTextView = (TextView) itemView.findViewById(R.id.nomeTextView);
+            cardItemPokemon = (CardView) itemView.findViewById(R.id.item_pokemon);
 
-            fotoImageView = itemView.findViewById(R.id.pokeImage);
-            nombreTextView = itemView.findViewById(R.id.tv_nomePoke);
-            tarjetas = itemView.findViewById(R.id.rv_pokemon);
-
-            tarjetas.setOnClickListener(this);
+            cardItemPokemon.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.rv_pokemon:
+                case R.id.item_pokemon:
                     String pokemon =  p.getName();
+                    Log.i("NOME DO POKEMON: ", pokemon);
+                    //Intent i = new Intent(v.getContext(),DetalhesActivity.class);
+                    //Bundle bundle = new Bundle();
+                   // bundle.putInt("NumberPokemon", pokemon);
+                   // i.putExtras(bundle);
+                    //v.getContext().startActivity(i);
 
-                    Intent i = new Intent(v.getContext(),DetalhesActivity.class);
-                    v.getContext().startActivity(i);
                     Snackbar.make(v, pokemon, Snackbar.LENGTH_SHORT).show();
                     break;
             }
