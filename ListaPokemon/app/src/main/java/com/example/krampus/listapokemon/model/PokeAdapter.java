@@ -79,13 +79,21 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-                    String pokemon =   nomeTextView.getText().toString();
-                    Intent i = new Intent(v.getContext(),DetalhesActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("NumberPokemon", pokemon);
-                    i.putExtras(bundle);
-                    v.getContext().startActivity(i);
-                    Snackbar.make(v, pokemon, Snackbar.LENGTH_SHORT).show();
+
+            String pokemon = nomeTextView.getText().toString();
+            Intent i = new Intent(v.getContext(),DetalhesActivity.class);
+            Bundle bundle = new Bundle();
+
+            for(Pokemon poke:dataset){
+
+                if(poke.getName().equals(pokemon)){
+                    int idPoke = poke.getNumber();
+                    Log.i("TESTE", pokemon + " " + dataset.indexOf(itemView) + " " + idPoke);
+                    bundle.putInt("NumberPokemon", idPoke);
+                        }
+            }
+            i.putExtras(bundle);
+            v.getContext().startActivity(i);
         }
     }
 }
