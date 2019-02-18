@@ -20,7 +20,7 @@ public class DetalhesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         int pokemon = bundle.getInt("NumberPokemon");
-        String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon + ".png";
+        String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +  pokemon + ".png";
 
         imageView = (ImageView) findViewById(R.id.image_detalhes);
 

@@ -69,7 +69,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            
+
             fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
             nomeTextView = (TextView) itemView.findViewById(R.id.nomeTextView);
             cardItemPokemon = (CardView) itemView.findViewById(R.id.item_pokemon);
@@ -79,20 +79,13 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.item_pokemon:
-                    String pokemon =  p.getName();
-                    Log.i("NOME DO POKEMON: ", pokemon);
-                    //Intent i = new Intent(v.getContext(),DetalhesActivity.class);
-                    //Bundle bundle = new Bundle();
-                   // bundle.putInt("NumberPokemon", pokemon);
-                   // i.putExtras(bundle);
-                    //v.getContext().startActivity(i);
-
+                    String pokemon =   nomeTextView.getText().toString();
+                    Intent i = new Intent(v.getContext(),DetalhesActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("NumberPokemon", pokemon);
+                    i.putExtras(bundle);
+                    v.getContext().startActivity(i);
                     Snackbar.make(v, pokemon, Snackbar.LENGTH_SHORT).show();
-                    break;
-            }
-
         }
     }
 }
