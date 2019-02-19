@@ -4,7 +4,8 @@ import com.example.krampus.listapokemon.model.Pokemon;
 
 import java.util.ArrayList;
 
-public class PokeGet {
+public class PokeGetLista {
+
     private ArrayList<Pokemon>results;
 
     public ArrayList<Pokemon> getResults() {

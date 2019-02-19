@@ -8,8 +8,8 @@ import android.util.Log;
 
 import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.controler.PokeAdapter;
-import com.example.krampus.listapokemon.interfaces.PokeInterface;
-import com.example.krampus.listapokemon.controler.PokeGet;
+import com.example.krampus.listapokemon.interfaces.PokeInterfaceList;
+import com.example.krampus.listapokemon.controler.PokeGetLista;
 import com.example.krampus.listapokemon.model.Pokemon;
 
 import java.util.ArrayList;
@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaPokemonAdapter = new PokeAdapter(this);
@@ -77,30 +76,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void obterDatos(int offset) {
-        PokeInterface service = retrofit.create(PokeInterface.class);
-        Call<PokeGet> pokemonRespostaCall = service.obtenerListaPokemon(20,offset);
+        PokeInterfaceList service = retrofit.create(PokeInterfaceList.class);
+        Call<PokeGetLista> pokemonRespostaCall = service.obterListaPokemon(20,offset);
 
-        pokemonRespostaCall.enqueue(new Callback<PokeGet>() {
+        pokemonRespostaCall.enqueue(new Callback<PokeGetLista>() {
             @Override
-            public void onResponse(Call<PokeGet> call, Response<PokeGet> response) {
+            public void onResponse(Call<PokeGetLista> call, Response<PokeGetLista> response) {
                 flag = true;
                 if(response.isSuccessful()){
-                    PokeGet pokemonResposta = response.body();
+
+                    PokeGetLista pokemonResposta = response.body();
 
                     ArrayList<Pokemon> listaPokemon = pokemonResposta.getResults();
-
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);
-
                 } else
                     Log.e(TAG, " on response "+ response.errorBody());
             }
 
             @Override
-            public void onFailure(Call<PokeGet> call, Throwable t) {
+            public void onFailure(Call<PokeGetLista> call, Throwable t) {
                 flag = true;
                 Log.e(TAG," on Failure "+ t.getMessage());
             }
         });
     }
-
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +37,13 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(PokeAdapter.ViewHolder holder, int position) {
         p = dataset.get(position);
         holder.nomeTextView.setText(p.getName());
         Glide.with(context)
-                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + p.getNumber() + ".png")
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + p.getid() + ".png")
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -86,8 +88,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
             for(Pokemon poke:dataset){
 
                 if(poke.getName().equals(pokemon)){
-                    int idPoke = poke.getNumber();
-                    //Log.i("TESTE", pokemon + " " + dataset.indexOf(itemView) + " " + idPoke);
+                    int idPoke = poke.getid();
                     bundle.putInt("NumberPokemon", idPoke);
                         }
             }
