@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="128dp"
-        android:layout_height="128dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:id="@+id/iv_image_detail"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -18,8 +18,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25sp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="TESTE"
         android:id="@+id/tv_detail_name"
         android:layout_alignTop="@+id/iv_image_detail"
         android:layout_toRightOf="@+id/iv_image_detail"
@@ -29,10 +29,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="TESTE"
         android:id="@+id/tv_detail_types"
         android:layout_below="@+id/tv_detail_name"
         android:layout_toRightOf="@+id/iv_image_detail"
         android:layout_toEndOf="@+id/iv_image_detail" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/iv_image_detail">
+    </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.interfaces.PokeInterface;
-import com.example.krampus.listapokemon.model.PokeType;
 import com.example.krampus.listapokemon.model.Pokemon;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +41,7 @@ public class DetalhesActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.iv_image_detail);
         tvName = (TextView) findViewById(R.id.tv_detail_name);
-        tvType = (TextView) findViewById(R.id.tv_detail_name);
+        tvType = (TextView) findViewById(R.id.tv_detail_types);
 
         loadImage(URL);
 
@@ -84,15 +83,16 @@ public class DetalhesActivity extends AppCompatActivity {
                     Pokemon pokemon = response.body();
 
                     tvName.setText(pokemon.getName());
-                    Log.i("TIPOS: ", pokemon.getPokeTypes().get(0).toString());
-                    //tvType.setText(pokemon.pokeTypesToString());
+                    tvType.setText(pokemon.pokeTypesToString());
 
                 }else{
                     Log.e("POKEDEX", " on response "+ response.errorBody());
                 }
             }
             @Override
-            public void onFailure(Call<Pokemon> call, Throwable t) {}
+            public void onFailure(Call<Pokemon> call, Throwable t) {
+                Log.i("TIPOS: ","FAIL" + t.getCause() );
+            }
         });
     }
 }

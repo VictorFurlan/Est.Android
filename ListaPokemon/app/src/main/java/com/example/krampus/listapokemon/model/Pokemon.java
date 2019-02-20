@@ -1,8 +1,9 @@
 package com.example.krampus.listapokemon.model;
 
+import com.example.krampus.listapokemon.model.stats.PokeStatList;
+import com.example.krampus.listapokemon.model.types.PokeTypeList;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Pokemon{
@@ -10,24 +11,16 @@ public class Pokemon{
     private int id;
     private String name;
     private String url;
-    private String type;
-
     @SerializedName("types")
-    private List<PokeType> pokeTypes = new ArrayList<>();
+    private List<PokeTypeList> types;
+    @SerializedName("stats")
+    private List<PokeStatList> stats;
 
-    public Pokemon(int id, String name, String url, String type, ArrayList<PokeType> pokeTypes) {
+    public Pokemon(int id, String name, String url, List<PokeTypeList> types) {
         this.id = id;
         this.name = name;
         this.url = url;
-        this.type = type;
-        this.pokeTypes = pokeTypes;
-    }
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        this.types = types;
     }
 
     public String getName() {
@@ -55,21 +48,30 @@ public class Pokemon{
         this.url = url;
     }
 
-    public List<PokeType> getPokeTypes() {
-        return pokeTypes;
+    public List<PokeTypeList> getPokeTypes() {
+        return types;
     }
 
-    public void setPokeTypes(List<PokeType> pokeTypes) {
-        this.pokeTypes = pokeTypes;
+    public void setPokeTypes(List<PokeTypeList> pokeTypes) {
+        this.types = pokeTypes;
+    }
+
+    public List<PokeStatList> getStats() {
+        return stats;
+    }
+
+    public void setStats(List<PokeStatList> stats) {
+        this.stats = stats;
     }
 
     public String pokeTypesToString() {
-        String types = "";
-        for (int i = 0; i < pokeTypes.size(); i++) {
-            if(i > 0)
-                types += ", ";
-            types += pokeTypes.get(i).getName();
+        String typePoke = "";
+        for (int i = 0; i < types.size(); i++) {
+            if (i > 0){
+                typePoke += ", ";
+            }
+            typePoke += types.get(i).getTypes().getName();
         }
-        return types;
+        return typePoke;
     }
 }
