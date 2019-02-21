@@ -5,15 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-=======
->>>>>>> parent of 0e44b45... Config toolbar
-=======
->>>>>>> parent of 0e44b45... Config toolbar
 
 import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.controler.PokeMainAdapter;
@@ -109,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -130,8 +123,4 @@ public class MainActivity extends AppCompatActivity {
                 return  super.onOptionsItemSelected(item);
         }
     }
-=======
->>>>>>> parent of 0e44b45... Config toolbar
-=======
->>>>>>> parent of 0e44b45... Config toolbar
 }
