@@ -76,4 +76,15 @@ public class Pokemon{
         }
         return typePoke;
     }
+
+    public String pokeStatsToString(String stat) {
+        String typePoke = "";
+        for (int i = 0; i < stats.size(); i++) {
+            if (stats.get(i).getPokeStat().getName().equals(stat)){
+                typePoke += stats.get(i).getPokeStat().getName() + ": ";
+                typePoke += stats.get(i).getBaseStat();
+            }
+        }
+        return typePoke;
+    }
 }

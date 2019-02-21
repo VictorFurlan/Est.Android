@@ -24,6 +24,12 @@ public class DetalhesActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView tvType;
     private TextView tvName;
+    private TextView tvAttack;
+    private TextView tvHP;
+    private TextView tvDefense;
+    private TextView tvSpeed;
+    private TextView tvSpAttack;
+    private TextView tvSpDefense;
 
     int idPokemon = 0;
 
@@ -44,6 +50,12 @@ public class DetalhesActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.iv_image_detail);
         tvName = (TextView) findViewById(R.id.tv_detail_name);
         tvType = (TextView) findViewById(R.id.tv_detail_types);
+        tvAttack = (TextView) findViewById(R.id.attackTextView);
+        tvHP = (TextView) findViewById(R.id.qtdTextViewHP);
+        tvDefense = (TextView) findViewById(R.id.defenseTextView);
+        tvSpeed = (TextView) findViewById(R.id.speedTextView);
+        tvSpAttack = (TextView) findViewById(R.id.spAttackTextView);
+        tvSpDefense= (TextView) findViewById(R.id.spDefenseTextView);
 
         loadImage(URL);
 
@@ -88,6 +100,12 @@ public class DetalhesActivity extends AppCompatActivity {
 
                     tvName.setText(pokemon.getName());
                     tvType.setText(pokemon.pokeTypesToString());
+                    tvAttack.setText(pokemon.pokeStatsToString("attack"));
+                    tvHP.setText(pokemon.pokeStatsToString("hp"));
+                    tvDefense.setText(pokemon.pokeStatsToString("defense"));
+                    tvSpeed.setText(pokemon.pokeStatsToString("speed"));
+                    tvSpAttack.setText(pokemon.pokeStatsToString("special-attack"));
+                    tvSpDefense.setText(pokemon.pokeStatsToString("special-defense"));
 
                 }else{
                     Log.e("POKEDEX", " on response "+ response.errorBody());

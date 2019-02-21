@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +19,26 @@ import com.example.krampus.listapokemon.view.DetalhesActivity;
 
 import java.util.ArrayList;
 
-public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
+public class PokeMainAdapter extends RecyclerView.Adapter<PokeMainAdapter.ViewHolder> {
     private ArrayList<Pokemon> dataset;
     private Context context;
     private Pokemon p;
 
-    public PokeAdapter(Context context) {
+    public PokeMainAdapter(Context context) {
         this.context = context;
         dataset = new ArrayList<>();
     }
 
 
     @Override
-    public PokeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PokeMainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pokemon, parent, false);
         return new ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(PokeAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(PokeMainAdapter.ViewHolder holder, int position) {
         p = dataset.get(position);
         holder.nomeTextView.setText(p.getName());
         Glide.with(context)
@@ -48,7 +47,6 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.fotoImageView);
-
     }
 
     @Override
@@ -90,7 +88,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
                 if(poke.getName().equals(pokemon)){
                     int idPoke = poke.getid();
                     bundle.putInt("NumberPokemon", idPoke);
-                        }
+                }
             }
             i.putExtras(bundle);
             v.getContext().startActivity(i);
