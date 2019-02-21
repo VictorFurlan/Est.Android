@@ -3,7 +3,7 @@ package com.example.krampus.listapokemon.model;
 import java.util.ArrayList;
 
 public class PokeGet {
-    private ArrayList<Pokemon> results;
+    private ArrayList<Pokemon>results;
 
     public ArrayList<Pokemon> getResults() {
         return results;

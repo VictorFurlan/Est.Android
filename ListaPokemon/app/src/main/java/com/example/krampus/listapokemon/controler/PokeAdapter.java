@@ -21,10 +21,6 @@ import com.example.krampus.listapokemon.view.DetalhesActivity;
 
 import java.util.ArrayList;
 
-/**
- * Created by monsh on 02/05/2017.
- */
-
 public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     private ArrayList<Pokemon> dataset;
     private Context context;
@@ -45,9 +41,9 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(PokeAdapter.ViewHolder holder, int position) {
         p = dataset.get(position);
-        holder.nombreTextView.setText(p.getName());
+        holder.tvNome.setText(p.getName());
         Glide.with(context)
-                .load("http://pokeapi.co/media/sprites/pokemon/" + p.getIdPoke() + ".png")
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + p.getNumber() + ".png")
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -69,28 +65,28 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView fotoImageView;
-        private TextView nombreTextView;
-        private CardView tarjetas;
+        private TextView tvNome;
+        private CardView itemPokemon;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            fotoImageView = itemView.findViewById(R.id.pokeImage);
-            nombreTextView = itemView.findViewById(R.id.tv_nomePoke);
-            tarjetas = itemView.findViewById(R.id.rv_pokemon);
+            fotoImageView = (ImageView) itemView.findViewById(R.id.fotoImageView);
+            tvNome = (TextView) itemView.findViewById(R.id.tv_nome);
+            itemPokemon = (CardView) itemView.findViewById(R.id.layout_item);
 
-            tarjetas.setOnClickListener(this);
+            itemPokemon.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.rv_pokemon:
+                case R.id.layout_item:
                     String pokemon =  p.getName();
 
                     Intent i = new Intent(v.getContext(),DetalhesActivity.class);
                     v.getContext().startActivity(i);
-                    Snackbar.make(v, pokemon, Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(v, pokemon, Snackbar.LENGTH_LONG).show();
                     break;
             }
 
