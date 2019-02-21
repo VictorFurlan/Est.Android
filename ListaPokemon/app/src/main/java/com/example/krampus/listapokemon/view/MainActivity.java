@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 import com.example.krampus.listapokemon.R;
-import com.example.krampus.listapokemon.controler.PokeMainAdapter;
+import com.example.krampus.listapokemon.controler.PokeAdapter;
 import com.example.krampus.listapokemon.interfaces.PokeInterfaceList;
 import com.example.krampus.listapokemon.controler.PokeGetLista;
 import com.example.krampus.listapokemon.model.Pokemon;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "POKEDEX";
 
     private RecyclerView recyclerView;
-    private PokeMainAdapter listaPokemonAdapter;
+    private PokeAdapter listaPokemonAdapter;
 
     private int offset;
     private boolean flag;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        listaPokemonAdapter = new PokeMainAdapter(this);
+        listaPokemonAdapter = new PokeAdapter(this);
         recyclerView.setAdapter(listaPokemonAdapter);
         recyclerView.setHasFixedSize(true);
 

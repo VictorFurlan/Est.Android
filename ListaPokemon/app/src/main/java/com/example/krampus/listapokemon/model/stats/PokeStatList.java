@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class PokeStatList {
 
-    @SerializedName("base_stat")
+
     private int baseStat;
     @SerializedName("stat")
     private PokeStat stat;
