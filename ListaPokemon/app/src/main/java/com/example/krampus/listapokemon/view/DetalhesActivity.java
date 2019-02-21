@@ -54,12 +54,8 @@ public class DetalhesActivity extends AppCompatActivity {
         tvSpeed = (TextView) findViewById(R.id.speedTextView);
         tvSpAttack = (TextView) findViewById(R.id.spAttackTextView);
         tvSpDefense= (TextView) findViewById(R.id.spDefenseTextView);
-<<<<<<< HEAD
 
         loadImage(URL);
-=======
->>>>>>> parent of 887e745... Revert "Detalhes ok"
-
         loadImage(URL);
 
         retrofit = new Retrofit.Builder()
