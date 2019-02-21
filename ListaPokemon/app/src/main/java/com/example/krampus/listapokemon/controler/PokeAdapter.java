@@ -30,11 +30,13 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
         dataset = new ArrayList<>();
     }
 
+
     @Override
     public PokeAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pokemon, parent, false);
         return new ViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(PokeAdapter.ViewHolder holder, int position) {
@@ -58,6 +60,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> {
         dataset.addAll(listaPokemon);
         notifyDataSetChanged();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

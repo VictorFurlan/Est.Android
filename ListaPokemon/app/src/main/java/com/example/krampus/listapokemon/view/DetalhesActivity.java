@@ -20,12 +20,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetalhesActivity extends AppCompatActivity {
 
-    int idPokemon = 0;
     private Retrofit retrofit;
     private ImageView imageView;
-    private ImageView imageViewShiny;
     private TextView tvType;
     private TextView tvName;
+
+    int idPokemon = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,28 +38,25 @@ public class DetalhesActivity extends AppCompatActivity {
         idPokemon = bundle.getInt("NumberPokemon");
 
         String URL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +  idPokemon + ".png";
-        String URL_SHINY = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ idPokemon +".png";
 
-        imageView = (ImageView) findViewById(R.id.iv_image);
-        imageViewShiny = (ImageView) findViewById(R.id.fotoImageViewShiny);
+        imageView = (ImageView) findViewById(R.id.iv_image_detail);
         tvName = (TextView) findViewById(R.id.tv_detail_name);
         tvType = (TextView) findViewById(R.id.tv_detail_types);
+
+        loadImage(URL);
 
         retrofit = new Retrofit.Builder()
                 .baseUrl("http://pokeapi.co/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        loadImage(URL, imageView);
-        loadImage(URL_SHINY, imageViewShiny);
         requestDataPokemon(idPokemon);
     }
-
-    private void loadImage(String url, ImageView imView){
+    private void loadImage(String url){
         try {
             Picasso.with(this).load(url)
                     .error(R.mipmap.ic_launcher)
-                    .into(imView, new com.squareup.picasso.Callback() {
+                    .into(imageView, new com.squareup.picasso.Callback() {
 
                         @Override
                         public void onSuccess(){}
@@ -94,7 +91,7 @@ public class DetalhesActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<Pokemon> call, Throwable t) {
-                Log.e("TIPOS: ","FAIL " + t.getCause() );
+                Log.i("TIPOS: ","FAIL" + t.getCause() );
             }
         });
     }
