@@ -1,7 +1,5 @@
 package com.example.krampus.listapokemon.model;
 
-import android.util.Log;
-
 import com.example.krampus.listapokemon.model.stats.PokeStatList;
 import com.example.krampus.listapokemon.model.types.PokeTypeList;
 import com.google.gson.annotations.SerializedName;
@@ -73,17 +71,6 @@ public class Pokemon{
                 typePoke += ", ";
             }
             typePoke += types.get(i).getTypes().getName();
-        }
-        return typePoke;
-    }
-
-    public String pokeStatsToString(String stat) {
-        String typePoke = "";
-        for (int i = 0; i < stats.size(); i++) {
-            if (stats.get(i).getPokeStat().getName().equals(stat)){
-                typePoke += stats.get(i).getPokeStat().getName() + ": ";
-                typePoke += stats.get(i).getBaseStat();
-            }
         }
         return typePoke;
     }
