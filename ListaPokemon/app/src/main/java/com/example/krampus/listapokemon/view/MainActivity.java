@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.controler.PokeAdapter;
@@ -117,5 +118,16 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_main, menu);
 
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()) {
+            case R.id.action_sair:
+                finish();
+                return true;
+            default:
+                return  super.onOptionsItemSelected(item);
+        }
     }
 }
