@@ -27,6 +27,8 @@ public class DetalhesActivity extends AppCompatActivity {
 
     int idPokemon = 0;
 
+    int idPokemon = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,8 @@ public class DetalhesActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.iv_image_detail);
         tvName = (TextView) findViewById(R.id.tv_detail_name);
         tvType = (TextView) findViewById(R.id.tv_detail_types);
+
+        loadImage(URL);
 
         loadImage(URL);
 
