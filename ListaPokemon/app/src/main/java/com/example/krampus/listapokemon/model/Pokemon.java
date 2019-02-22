@@ -1,7 +1,5 @@
 package com.example.krampus.listapokemon.model;
 
-import android.util.Log;
-
 import com.example.krampus.listapokemon.model.stats.PokeStatList;
 import com.example.krampus.listapokemon.model.types.PokeTypeList;
 import com.google.gson.annotations.SerializedName;
@@ -18,11 +16,12 @@ public class Pokemon{
     @SerializedName("stats")
     private List<PokeStatList> stats;
 
-    public Pokemon(int id, String name, String url, List<PokeTypeList> types) {
+    public Pokemon(int id, String name, String url, List<PokeTypeList> types, List<PokeStatList> stats) {
         this.id = id;
         this.name = name;
         this.url = url;
         this.types = types;
+        this.stats = stats;
     }
 
     public String getName() {

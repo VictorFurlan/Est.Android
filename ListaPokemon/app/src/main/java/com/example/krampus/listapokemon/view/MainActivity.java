@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 
 import com.example.krampus.listapokemon.R;
 import com.example.krampus.listapokemon.controler.PokeMainAdapter;
@@ -26,6 +28,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     private Retrofit retrofit;
     private static final String TAG = "POKEDEX";
 
@@ -40,10 +44,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         listaPokemonAdapter = new PokeMainAdapter(this);
         recyclerView.setAdapter(listaPokemonAdapter);
         recyclerView.setHasFixedSize(true);
+
+        toolbar.setTitle("PokeDex");
+        setSupportActionBar(toolbar);
 
         final GridLayoutManager layoutManager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(layoutManager);
@@ -53,12 +61,14 @@ public class MainActivity extends AppCompatActivity {
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
                 if (dy >0){
+
                     int visibleItemCount = layoutManager.getChildCount();
                     int totalItemCount = layoutManager.getItemCount();
                     int pastVisibleItems = layoutManager.findFirstVisibleItemPosition();
 
                     if(flag) {
                         if ((visibleItemCount +pastVisibleItems ) >= totalItemCount) {
+
                             Log.i(TAG, " FIM");
                             flag = false;
                             offset += 20;
@@ -90,9 +100,9 @@ public class MainActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
                     PokeGetLista pokemonResposta = response.body();
-
                     ArrayList<Pokemon> listaPokemon = pokemonResposta.getResults();
                     listaPokemonAdapter.adicionarListaPokemon(listaPokemon);
+
                 } else
                     Log.e(TAG, " on response "+ response.errorBody());
             }
@@ -105,22 +115,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-
-        return true;
-    }
-
     public boolean onOptionsItemSelected(MenuItem item){
 
-        switch (item.getItemId()) {
-            case R.id.action_sair:
+        switch (item.getItemId()){
+
+            case R.id.action_exit:
                 finish();
                 return true;
             default:
-                return  super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
     }
 }
