@@ -20,6 +20,8 @@ public class ConversaActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.tb_conversa);
 
+        Bundle extra = getIntent().getExtras();
+
         toolbar.setTitle("blabla");
         toolbar.setNavigationIcon(R.drawable.ic_action_arrow_left);
         setSupportActionBar(toolbar);
