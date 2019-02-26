@@ -8,21 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
-
 
 import br.com.shutappandroid.com.krampus.shutapp.R;
-import br.com.shutappandroid.com.krampus.shutapp.model.Contato;
+import br.com.shutappandroid.com.krampus.shutapp.model.Conversa;
 
-public class ContatoAdapter extends ArrayAdapter<Contato> {
+public class ConversaAdapter extends ArrayAdapter<Conversa> {
 
-    private ArrayList<Contato> contatos;
+    private ArrayList<Conversa> conversas;
     private Context context;
 
-    public ContatoAdapter(Context c, ArrayList<Contato> objects) {
+    public ConversaAdapter(Context c, ArrayList<Conversa> objects) {
         super(c, 0, objects);
 
-        this.contatos = objects;
+        this.conversas = objects;
         this.context = c;
     }
 
@@ -31,7 +29,7 @@ public class ContatoAdapter extends ArrayAdapter<Contato> {
 
         View view = null;
         //testar se a lista de contatos não for vazia
-        if(contatos != null){
+        if(conversas != null){
 
             //inicializa o objeto para criação da view com recursos do system
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -41,11 +39,11 @@ public class ContatoAdapter extends ArrayAdapter<Contato> {
 
             //recupera o layout para exibição
             TextView nomeContato = view.findViewById(R.id.tv_titulo);
-            TextView emailContato = view.findViewById(R.id.tv_subtitulo);
+            TextView mensagem = view.findViewById(R.id.tv_subtitulo);
 
-            Contato contato  = contatos.get( position );
-            nomeContato.setText(contato.getNome());
-            emailContato.setText(contato.getEmail());
+            Conversa conversa  = conversas.get( position );
+            nomeContato.setText(conversa.getNome());
+            mensagem.setText(conversa.getMensagem());
         }
         return view;
     }

@@ -15,6 +15,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
@@ -29,7 +33,11 @@ public class LoginActivity extends AppCompatActivity {
     private EditText senha;
     private Button botaoLogar;
     private Usuario usuario;
+    private String IdUsuarioLogado;
+
     private FirebaseAuth autenticacao;
+    private DatabaseReference firebase;
+    private ValueEventListener valueEventListenerMensagem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +73,33 @@ public class LoginActivity extends AppCompatActivity {
                 usuario.getSenha()
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+            public void onComplete(Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
 
-                    Preferencias preferencias = new Preferencias(LoginActivity.this);
-                    String IdUsuarioLogado = Base65Custom.codificarBase64(usuario.getEmail());
-                    preferencias.salvarDados(IdUsuarioLogado);
+                    IdUsuarioLogado = Base65Custom.codificarBase64(usuario.getEmail());
+
+                    firebase = ConfiguracaoFirebase.getFirebase()
+                            .child("usuarios")
+                            .child(IdUsuarioLogado);
+
+                    valueEventListenerMensagem = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            Usuario usuario = dataSnapshot.getValue(Usuario.class);
+
+                            Preferencias preferencias = new Preferencias(LoginActivity.this);
+                            preferencias.salvarDados(IdUsuarioLogado, usuario.getNome());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    };
+
+                    firebase.addListenerForSingleValueEvent(valueEventListenerMensagem);
 
                     abrirTelaPrincipal();
                     Toast.makeText(LoginActivity.this, "Login realizado com sucesso!", Toast.LENGTH_LONG).show();
@@ -112,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main2);
+            setContentView(R.layout.activity_main);
         }
     }
 }

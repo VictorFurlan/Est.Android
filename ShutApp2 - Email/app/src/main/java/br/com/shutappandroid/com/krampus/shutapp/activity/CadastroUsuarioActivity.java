@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import br.com.shutappandroid.com.krampus.shutapp.R;
 import br.com.shutappandroid.com.krampus.shutapp.helper.Base65Custom;
@@ -32,6 +33,7 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
     private Button botaoCadastrar;
     private Usuario usuario;
     private FirebaseAuth autenticacao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +77,10 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
                     usuario.setId(identificadorUsuario);
                     usuario.salvar();
 
+
+
                     Preferencias preferencias = new Preferencias(CadastroUsuarioActivity.this);
-                    preferencias.salvarDados(identificadorUsuario);
+                    preferencias.salvarDados(identificadorUsuario, usuario.getNome());
 
                     abrirLoginusuario();
 

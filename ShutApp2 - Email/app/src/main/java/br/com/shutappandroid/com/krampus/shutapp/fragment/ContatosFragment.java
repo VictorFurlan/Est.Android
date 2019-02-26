@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import br.com.shutappandroid.com.krampus.shutapp.R;
+import br.com.shutappandroid.com.krampus.shutapp.activity.ConversaActivity;
 import br.com.shutappandroid.com.krampus.shutapp.activity.LoginActivity;
 import br.com.shutappandroid.com.krampus.shutapp.adapter.ContatoAdapter;
 import br.com.shutappandroid.com.krampus.shutapp.config.ConfiguracaoFirebase;
@@ -68,11 +69,6 @@ public class ContatosFragment extends Fragment {
         listView = view.findViewById(R.id.lv_contatos);
         Preferencias preferencias = new Preferencias(getActivity());
         String identificadorUsuarioLogado = preferencias.getIdentificador();
-        /*adapter = new ArrayAdapter(
-                getActivity(),
-               R.layout.lista_contato,
-                contatos
-        );*/
 
         // Adapter criado para cada contato da lista
         adapter = new ContatoAdapter(getActivity(), contatos);
@@ -113,7 +109,7 @@ public class ContatosFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(getActivity(), LoginActivity.ConversaActivity.class);
+                Intent intent = new Intent(getActivity(), ConversaActivity.class);
 
                 Contato contato = contatos.get(position);
 
